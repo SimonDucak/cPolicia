@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cPolicia</title>
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
+  <link rel="stylesheet" href="css/jquery-ui-structure.min.css">
+  <link rel="stylesheet" href="css/jquery-ui-theme.min.css">
+  <link rel="stylesheet" href="css/application.css">
+  <link rel="stylesheet" href="less/new-component.css">
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+</head>
+<body class="un-v1">
+  <!-- Loader -->
+  <div id="loading_screen" data-bind="visible: isLoading" style="display: none;"><span data-bind="html: loadingText"></span></div>
+
+  <!-- Header -->
+  <div class="single header">
+    <img class="logo" src="./assets/logo_unionpoistovna.jpg">
+    <a href="/" class="header-logout"><i class="icon icon-logout"></i></a>
+    <div class="header-user-menu" data-bind="text: brokerFullName()">Timon Admin</div>
+  </div>
+
+
+  <div>
+    <!-- Progeessbar -->
+    <div class="progressbar show" data-bind="css: {'show': model.isAuthenticated}">
+      <h1>Overenie poistného vzťahu pre Cudzineckú políciu</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="app show" style="display: block">
+      <section class="form-step step-active" id="filter-section">
+
+        <!-- Filter -->
+        <div>
+          <div class="section title-red">
+            <h2>Filter</h2>
+            <div class="row-4">
+              <div class="single single-MinHeight required has-validation">
+                <label for="birthday">
+                  Dátum narodenia klienta
+                  <span class="more-info">
+							    <span><i class="icon icon-elipsis"></i></span>
+						    </span>
+                </label>
+
+                <input type="text" name="" id="birthday" value="" class="disabled" placeholder="Vpíšte">
+                <div class="error" id="birthdayError"></div>
+              </div>
+
+              <div class="single single-MinHeight required has-validation">
+                <label for="name">
+                  Meno klienta
+                  <span class="more-info">
+							    <span><i class="icon icon-elipsis"></i></span>
+						    </span>
+                </label>
+
+                <input type="text" name="" id="name" value="" class="disabled" placeholder="Vpíšte">
+                <div class="error" id="nameError"></div>
+              </div>
+
+              <div class="single single-MinHeight required has-validation">
+                <label for="nationality">
+                  Štátna príslušnosť klienta
+                  <span class="more-info">
+							    <span><i class="icon icon-elipsis"></i></span>
+						    </span>
+                </label>
+
+                <input list="countries" type="text" name="" id="nationality" value="" class="disabled" placeholder="Vpíšte">
+                <datalist id="countries">
+                  <option value="Poľsko"></option>
+                  <option value="Rakúsko"></option>
+                  <option value="Ukrajina"></option>
+                  <option value="Srbsko"></option>
+                  <option value="Chorvátsko"></option>
+                </datalist>
+                <div class="error" id="nationalityError"></div>
+              </div>
+
+              <div class="single single-MinHeight required has-validation">
+                <label for="agreementNumber">
+                  Číslo poistnej zmluvy
+                  <span class="more-info">
+							    <span><i class="icon icon-elipsis"></i></span>
+						    </span>
+                </label>
+
+                <input type="text" name="" id="agreementNumber" value="" class="disabled" placeholder="Vpíšte">
+                <div class="error" id="agreementNumberError"></div>
+              </div>
+
+              <div class="single single-MinHeight required has-validation">
+                <label for="startInsurance">
+                  Dátum začiatku poistenia
+                  <span class="more-info">
+							    <span><i class="icon icon-elipsis"></i></span>
+						    </span>
+                </label>
+
+                <input type="text" name="" id="startInsurance" value="" class="disabled" placeholder="Vpíšte">
+                <div class="error" id="startInsuranceError"></div>
+              </div>
+
+              <div class="single single-MinHeight required has-validation">
+                <label for="endInsurance">
+                  Dátum konca poistenia
+                  <span class="more-info">
+							    <span><i class="icon icon-elipsis"></i></span>
+						    </span>
+                </label>
+
+                <input type="text" name="" id="endInsurance" value="" class="disabled" placeholder="Vpíšte">
+                <div class="error" id="endInsuranceError"></div>
+              </div>
+            </div>
+
+            <div class="cta-panel row-flex">
+              <button class="button primary">Hľadať</button>
+              <button class="button secondary">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div>
+          <div class="section title-red">
+            <h2>Výstup vyhľadávania</h2>
+            <div class="result-holder">  <!-- NA TENTO ELEMENT BUDE TREBA DAT BINDING!! -->
+
+              <dl class="agreement-dl">
+                <dt class="header-table">
+                  <span class="aggrement-index">1.</span>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Priezvisko poisteného</th>
+                        <th>Meno poisteného</th>
+                        <th>Dátum narodenia poisteného</th>
+                        <th>Štátna príslušnosť poisteného</th>
+                        <th>Prechodné bydlisko SR poisteného</th>
+                        <th>Číslo OP/dokladu poisteného</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Daniel</td>
+                        <td>Mrkvička</td>
+                        <td>14.8.1987</td>
+                        <td>Srbská</td>
+                        <td>Bratislava</td>
+                        <td>EE459788</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <button class="button primary show-btn">Zobraziť</button>
+                  <button class="button primary download">
+                    <i class="icon-download"></i>
+                  </button>
+                </dt>
+
+                <dd>
+                  <ul>
+                    <li>
+                      <span class="aggrement-index">1.</span>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Číslo poistnej zmluvy</th>
+                            <th>Začiatok poistenia</th>
+                            <th>Koniec poistenia</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>č. 123879</td>
+                            <td>12.5.2013</td>
+                            <td>12.6.2013</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </li>
+
+                    <li>
+                      <span class="aggrement-index">2.</span>
+                      <table>
+                        <thead>
+                        <tr>
+                          <th>Číslo poistnej zmluvy</th>
+                          <th>Začiatok poistenia</th>
+                          <th>Koniec poistenia</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>č. 123879</td>
+                          <td>12.8.2013</td>
+                          <td>12.9.2013</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </li>
+
+                    <li>
+                      <span class="aggrement-index">3.</span>
+                      <table>
+                        <thead>
+                        <tr>
+                          <th>Číslo poistnej zmluvy</th>
+                          <th>Začiatok poistenia</th>
+                          <th>Koniec poistenia</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>č. 123879</td>
+                          <td>12.8.2013</td>
+                          <td>12.9.2013</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </li>
+
+                    <li>
+                      <span class="aggrement-index">4.</span>
+                      <table>
+                        <thead>
+                        <tr>
+                          <th>Číslo poistnej zmluvy</th>
+                          <th>Začiatok poistenia</th>
+                          <th>Koniec poistenia</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>č. 123879</td>
+                          <td>12.8.2013</td>
+                          <td>12.9.2013</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </li>
+
+                    <li>
+                      <span class="aggrement-index">5.</span>
+                      <table>
+                        <thead>
+                        <tr>
+                          <th>Číslo poistnej zmluvy</th>
+                          <th>Začiatok poistenia</th>
+                          <th>Koniec poistenia</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>č. 123879</td>
+                          <td>12.8.2013</td>
+                          <td>12.9.2013</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </li>
+                  </ul>
+                  <div class="row-1 more-agreement">
+                    <button class="button primary ">Zobraziť viac</button>
+                  </div>
+                </dd>
+
+              </dl>
+
+              <dl class="agreement-dl">
+                <dt class="header-table">
+                  <span class="aggrement-index">2.</span>
+                  <table>
+                    <thead>
+                    <tr>
+                      <th>Priezvisko poisteného</th>
+                      <th>Meno poisteného</th>
+                      <th>Dátum narodenia poisteného</th>
+                      <th>Štátna príslušnosť poisteného</th>
+                      <th>Prechodné bydlisko SR poisteného</th>
+                      <th>Číslo OP/dokladu poisteného</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>Daniel</td>
+                      <td>Mrkvička</td>
+                      <td>14.8.1987</td>
+                      <td>Srbská</td>
+                      <td>Bratislava</td>
+                      <td>EE459788</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <button class="button primary show-btn">Zobraziť</button>
+                  <button class="button primary download">
+                    <i class="icon-download"></i>
+                  </button>
+                </dt>
+
+                <dd>
+                  <ul>
+                    <li>
+                      <span class="aggrement-index">2.</span>
+                      <table>
+                        <thead>
+                        <tr>
+                          <th>Číslo poistnej zmluvy</th>
+                          <th>Začiatok poistenia</th>
+                          <th>Koniec poistenia</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>č. 123879</td>
+                          <td>12.5.2012</td>
+                          <td>12.6.2013</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </li>
+                  </ul>
+                </dd>
+              </dl>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+  <script src="./binding.js"></script>
+</body>
+</html>

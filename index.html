@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/jquery-ui-theme.min.css">
   <link rel="stylesheet" href="css/application.css">
   <link rel="stylesheet" href="less/new-component.css">
+  <link rel="stylesheet" href="less/specific.css">
   <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -36,7 +37,7 @@
       <section class="form-step step-active" id="filter-section">
 
         <!-- Filter -->
-        <div>
+        <div id="filter">
           <div class="section title-red">
             <h2>Filter</h2>
             <div class="row-4">
@@ -52,7 +53,7 @@
                 <div class="error" id="birthdayError"></div>
               </div>
 
-              <div class="single single-MinHeight required has-validation">
+              <div class="single single-MinHeight has-validation">
                 <label for="name">
                   Meno klienta
                   <span class="more-info">
@@ -64,7 +65,7 @@
                 <div class="error" id="nameError"></div>
               </div>
 
-              <div class="single single-MinHeight required has-validation">
+              <div class="single single-MinHeight has-validation">
                 <label for="nationality">
                   Štátna príslušnosť klienta
                   <span class="more-info">
@@ -83,7 +84,7 @@
                 <div class="error" id="nationalityError"></div>
               </div>
 
-              <div class="single single-MinHeight required has-validation">
+              <div class="single single-MinHeight has-validation">
                 <label for="agreementNumber">
                   Číslo poistnej zmluvy
                   <span class="more-info">
@@ -95,7 +96,7 @@
                 <div class="error" id="agreementNumberError"></div>
               </div>
 
-              <div class="single single-MinHeight required has-validation">
+              <div class="single single-MinHeight has-validation">
                 <label for="startInsurance">
                   Dátum začiatku poistenia
                   <span class="more-info">
@@ -107,7 +108,7 @@
                 <div class="error" id="startInsuranceError"></div>
               </div>
 
-              <div class="single single-MinHeight required has-validation">
+              <div class="single single-MinHeight has-validation">
                 <label for="endInsurance">
                   Dátum konca poistenia
                   <span class="more-info">
@@ -132,203 +133,91 @@
           <div class="section title-red">
             <h2>Výstup vyhľadávania</h2>
             <div class="result-holder">  <!-- NA TENTO ELEMENT BUDE TREBA DAT BINDING!! -->
+              <table class="accordion-table">
+                <thead>
+                  <tr>
+                    <th>Priezvisko poisteného</th>
+                    <th>Meno poisteného</th>
+                    <th>Dátum narodenia poisteného</th>
+                    <th>Štátna príslušnosť poisteného</th>
+                    <th>Prechodné bydlisko SR poisteného</th>
+                    <th>Číslo OP/dokladu poisteného</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="result-tr">
+                    <td>Daniel</td>
+                    <td>Mrkvička</td>
+                    <td>14.8.1987</td>
+                    <td>Srbská</td>
+                    <td>Bratislava</td>
+                    <td class="border-right-none">EE459788</td>
+                    <td class="buttons">
+                      <button class="button primary show-btn">+</button>
+                      <button class="button primary download">
+                        <i class="icon-download"></i>
+                      </button>
+                    </td>
+                  </tr>
 
-              <dl class="agreement-dl">
-                <dt class="header-table">
-                  <span class="aggrement-index">1.</span>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Priezvisko poisteného</th>
-                        <th>Meno poisteného</th>
-                        <th>Dátum narodenia poisteného</th>
-                        <th>Štátna príslušnosť poisteného</th>
-                        <th>Prechodné bydlisko SR poisteného</th>
-                        <th>Číslo OP/dokladu poisteného</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Daniel</td>
-                        <td>Mrkvička</td>
-                        <td>14.8.1987</td>
-                        <td>Srbská</td>
-                        <td>Bratislava</td>
-                        <td>EE459788</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <button class="button primary show-btn">Zobraziť</button>
-                  <button class="button primary download">
-                    <i class="icon-download"></i>
-                  </button>
-                </dt>
+                  <tr class="agreements">
+                    <td colspan="6">
+                      <div class="agreements-list">
+                        <ul class="thead">
+                          <li>Číslo poistnej zmluvy</li>
+                          <li>Začiatok poistenia</li>
+                          <li>Koniec poistenia</li>
+                        </ul>
 
-                <dd>
-                  <ul>
-                    <li>
-                      <span class="aggrement-index">1.</span>
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Číslo poistnej zmluvy</th>
-                            <th>Začiatok poistenia</th>
-                            <th>Koniec poistenia</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>č. 123879</td>
-                            <td>12.5.2013</td>
-                            <td>12.6.2013</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </li>
+                        <ul>
+                          <li>č. 1231231332</li>
+                          <li>1.1.2015</li>
+                          <li>1.2.2015</li>
+                        </ul>
 
-                    <li>
-                      <span class="aggrement-index">2.</span>
-                      <table>
-                        <thead>
-                        <tr>
-                          <th>Číslo poistnej zmluvy</th>
-                          <th>Začiatok poistenia</th>
-                          <th>Koniec poistenia</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>č. 123879</td>
-                          <td>12.8.2013</td>
-                          <td>12.9.2013</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </li>
+                        <ul>
+                          <li>č. 48972318</li>
+                          <li>1.6.2015</li>
+                          <li>1.7.2015</li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
 
-                    <li>
-                      <span class="aggrement-index">3.</span>
-                      <table>
-                        <thead>
-                        <tr>
-                          <th>Číslo poistnej zmluvy</th>
-                          <th>Začiatok poistenia</th>
-                          <th>Koniec poistenia</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>č. 123879</td>
-                          <td>12.8.2013</td>
-                          <td>12.9.2013</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </li>
+                  <tr class="result-tr">
+                    <td>Daniel</td>
+                    <td>Mrkvička</td>
+                    <td>14.8.1987</td>
+                    <td>Srbská</td>
+                    <td>Bratislava</td>
+                    <td class="border-right-none">EE459788</td>
+                    <td class="buttons">
+                      <button class="button primary show-btn">+</button>
+                      <button class="button primary download">
+                        <i class="icon-download"></i>
+                      </button>
+                    </td>
+                  </tr>
 
-                    <li>
-                      <span class="aggrement-index">4.</span>
-                      <table>
-                        <thead>
-                        <tr>
-                          <th>Číslo poistnej zmluvy</th>
-                          <th>Začiatok poistenia</th>
-                          <th>Koniec poistenia</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>č. 123879</td>
-                          <td>12.8.2013</td>
-                          <td>12.9.2013</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </li>
+                  <tr class="agreements">
+                    <td colspan="6">
+                      <div class="agreements-list">
+                        <ul class="thead">
+                          <li>Číslo poistnej zmluvy</li>
+                          <li>Začiatok poistenia</li>
+                          <li>Koniec poistenia</li>
+                        </ul>
 
-                    <li>
-                      <span class="aggrement-index">5.</span>
-                      <table>
-                        <thead>
-                        <tr>
-                          <th>Číslo poistnej zmluvy</th>
-                          <th>Začiatok poistenia</th>
-                          <th>Koniec poistenia</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>č. 123879</td>
-                          <td>12.8.2013</td>
-                          <td>12.9.2013</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </li>
-                  </ul>
-                  <div class="row-1 more-agreement">
-                    <button class="button primary ">Zobraziť viac</button>
-                  </div>
-                </dd>
-
-              </dl>
-
-              <dl class="agreement-dl">
-                <dt class="header-table">
-                  <span class="aggrement-index">2.</span>
-                  <table>
-                    <thead>
-                    <tr>
-                      <th>Priezvisko poisteného</th>
-                      <th>Meno poisteného</th>
-                      <th>Dátum narodenia poisteného</th>
-                      <th>Štátna príslušnosť poisteného</th>
-                      <th>Prechodné bydlisko SR poisteného</th>
-                      <th>Číslo OP/dokladu poisteného</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>Daniel</td>
-                      <td>Mrkvička</td>
-                      <td>14.8.1987</td>
-                      <td>Srbská</td>
-                      <td>Bratislava</td>
-                      <td>EE459788</td>
-                    </tr>
-                    </tbody>
-                  </table>
-                  <button class="button primary show-btn">Zobraziť</button>
-                  <button class="button primary download">
-                    <i class="icon-download"></i>
-                  </button>
-                </dt>
-
-                <dd>
-                  <ul>
-                    <li>
-                      <span class="aggrement-index">2.</span>
-                      <table>
-                        <thead>
-                        <tr>
-                          <th>Číslo poistnej zmluvy</th>
-                          <th>Začiatok poistenia</th>
-                          <th>Koniec poistenia</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>č. 123879</td>
-                          <td>12.5.2012</td>
-                          <td>12.6.2013</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </li>
-                  </ul>
-                </dd>
-              </dl>
-
+                        <ul>
+                          <li>č. 1231231332</li>
+                          <li>1.1.2015</li>
+                          <li>1.2.2015</li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

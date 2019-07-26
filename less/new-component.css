@@ -13,91 +13,96 @@
   margin-top: 30px;
   margin-bottom: 50px;
 }
+.agreements {
+  display: none;
+}
+.agreements .agreements-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.agreements td {
+  width: 100%;
+  border-bottom: none!important;
+}
+.agreements tr {
+  border-bottom: none!important;
+}
+.agreements ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+}
+.agreements ul li {
+  width: 200px;
+  text-align: center;
+  padding: 10px 0px;
+  border-right: 1px solid #ddd;
+}
+.agreements ul.thead {
+  font-weight: bold;
+}
+.result-tr {
+  background-color: #f9f9f9;
+}
 .more-agreement {
   margin-top: 10px;
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
 }
-.agreement-dl {
+.accordion-table {
   margin: 0!important;
 }
-.agreement-dl.open-dl {
-  margin: 10px 0!important;
-}
-.agreement-dl dt {
+.accordion-table .buttons {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  border-bottom: none;
+  padding: 0;
+  padding-left: 10px;
+  height: 100%;
+  border-left: none!important;
+  background-color: white;
 }
-.agreement-dl dd {
-  display: none;
-}
-.agreement-dl .dropdown {
+.accordion-table .dropdown {
   height: 40px;
   width: 40px;
   cursor: pointer;
 }
-.agreement-dl thead tr th {
+.accordion-table .show-btn,
+.accordion-table .download {
+  transform: scale(0.9);
+}
+.accordion-table thead {
+  padding: 0px 15px;
+  background-color: #eeeeee;
+}
+.accordion-table thead tr th {
   font-weight: bold;
   text-transform: none;
   color: black;
+  padding: 20px 10px!important;
+  text-align: center;
 }
-.agreement-dl tbody tr td {
+.accordion-table tbody tr td {
   font-weight: normal;
   text-transform: none;
   color: black;
+  text-align: center!important;
+  vertical-align: middle;
 }
-.agreement-dl .aggrement-index {
-  margin-right: 25px;
-  font-size: 18px;
-  font-weight: bold;
-  color: black;
+.accordion-table .border-right-none {
+  border-right: none!important;
 }
-.agreement-dl .show-btn {
-  margin-right: 10px;
-}
-.agreement-dl ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.agreement-dl ul li {
-  box-sizing: border-box;
-  border-bottom: 1px solid #818181;
-  display: flex;
-  padding: 0 25px;
-  justify-content: start;
-  align-items: center;
-  width: 100%;
-}
-.agreement-dl ul td {
-  padding-bottom: 5px;
-  padding-top: 5px;
-  border-bottom: none!important;
-}
-.agreement-dl ul th {
-  padding-bottom: 12px;
+.accordion-table .agreement-table td {
   padding-top: 12px;
+  padding-bottom: 12px;
 }
-.agreement-dl ul .aggrement-index {
-  color: #808080;
-  font-size: 16px;
-  font-weight: normal;
-}
-.agreement-dl .header-table {
-  padding: 0px 25px;
-  background-color: #fafafa;
-  border-bottom: 1px solid black;
-}
-.agreement-dl .header-table table {
-  margin-right: 20px;
-}
-.agreement-dl .header-table th {
-  padding-bottom: 15px;
-  padding-top: 15px;
-}
-.agreement-dl .header-table td {
-  padding-top: 7px;
-  padding-bottom: 7px ;
+.accordion-table .show-btn {
+  margin-right: 5px;
+  font-size: 22px;
+  font-weight: bold;
+  width: 40px;
 }

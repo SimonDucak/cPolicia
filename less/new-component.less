@@ -37,16 +37,22 @@
   ul {
     list-style: none;
     display: flex;
+    justify-content: flex-end;
     padding: 0;
     margin: 0;
     width: 100%;
     border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
 
     li {
       width: 200px;
       text-align: center;
       padding: 10px 0px;
       border-right: 1px solid #ddd;
+
+      &:first-child {
+        border-left: 1px solid #ddd;
+      }
     }
 
     &.thead {
@@ -60,10 +66,20 @@
 }
 
 .more-agreement {
+  position: relative;
   margin-top: 10px;
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
+
+  .count-info {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 16px;
+  }
 }
 
 .accordion-table {
@@ -101,6 +117,10 @@
     color: black;
     padding: 20px 10px!important;
     text-align: center;
+
+    &:first-child {
+      text-align: center;
+    }
   }
 
   tbody tr td {

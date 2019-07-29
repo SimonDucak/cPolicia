@@ -31,16 +31,21 @@
 .agreements ul {
   list-style: none;
   display: flex;
+  justify-content: flex-end;
   padding: 0;
   margin: 0;
   width: 100%;
   border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
 }
 .agreements ul li {
   width: 200px;
   text-align: center;
   padding: 10px 0px;
   border-right: 1px solid #ddd;
+}
+.agreements ul li:first-child {
+  border-left: 1px solid #ddd;
 }
 .agreements ul.thead {
   font-weight: bold;
@@ -49,10 +54,19 @@
   background-color: #f9f9f9;
 }
 .more-agreement {
+  position: relative;
   margin-top: 10px;
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
+}
+.more-agreement .count-info {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 16px;
 }
 .accordion-table {
   margin: 0!important;
@@ -84,6 +98,9 @@
   text-transform: none;
   color: black;
   padding: 20px 10px!important;
+  text-align: center;
+}
+.accordion-table thead tr th:first-child {
   text-align: center;
 }
 .accordion-table tbody tr td {
